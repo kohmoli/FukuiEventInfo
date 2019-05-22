@@ -1,0 +1,15 @@
+﻿body{
+    margin: 0;
+    font-size: 2vh;
+    font-family: "Noto Sans JP";
+}
+
+h1, h2, h3, h4, h5, h6, p{
+    margin: 0;
+    font-weight: normal;
+}
+
+footer{
+    display: flex;
+    justify-content: center;
+}
