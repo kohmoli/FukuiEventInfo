@@ -8,15 +8,37 @@
         <link href="style_pc.css" rel="stylesheet" media="(min-device-aspect-ratio: 3/4)">
         <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-        <title>Fukui Event Info</title>
+        <title>Fukui Event Information</title>
     </head>
     <body>
+      <header>
+        <h1>Fukui Event Information</h1>
+        <form id="form">
+          <div>
+            <input id="search" type="search" v-model="keyword" placeholder="Search by Event Name or Category.">
+          </div>
+          <div id="changeRange">
+            <span class="changeRangeButton">10件ずつ表示</span>|
+            <span class="changeRangeButton">30件ずつ表示</span>|
+            <span class="changeRangeButton">全件表示</span>
+          </div>
+        </form>
+      </header>
+
+      <div id="contents">
+        <article v-for="event in activeEvents2()">
+          <div class="start_date">{{ event.start_date }} → {{ event.end_date }}</div>
+          <h2 class="event_name">{{ event.event_name }}</h2>
+          <div class="contact">{{ event.contact }}</div>
+          <div class="category">{{ event.category }}</div>
+        </article>
+      </div>
 
       <footer>
-          <small>Copyright &copy; umbroom All Rights Reserved.</small>
+          <small>Copyright &copy; Fukui Event Information All Rights Reserved.</small>
       </footer>
         
 
-        <script src="main.js"></script>
+        <script src="Untitled.js"></script>
     </body>
 </html>
