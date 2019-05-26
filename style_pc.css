@@ -36,22 +36,27 @@ header{
     width: 100%;
     height: 12vw;
 
-    background: rgb(0, 0, 255);
+    background: rgb(255, 255, 255);
 }
 
-#form{
-    width: 100%;
+#searchForm{
+    width: 82vw;
 
     text-align: center;
 }
 
 #search{
-    width: 80vw;
+    width: 82vw;
     height: 2vw;
 
     padding: 0 0.75vw;
+
+    background: rgb(245, 245, 245);
+
     border-radius: 1vw / 1vw;
     border-width: 0;
+
+    font-size: 0.8vw;
 }
 
 #search:focus{
@@ -63,16 +68,20 @@ header{
     align-items: center;
 
     height: 3vw;
-
-    color: rgb(255, 255, 255);
 }
 
 .changeRangeButton{
-    flex-grow: 1;
+    width: 100%;
+    color: rgb(180, 180, 180);
+}
 
-    display: inline-block;
+.buttonActive{
+    color: rgb(0, 0, 0);
+}
 
-    border-width: 0;
+.verticalHr{
+    height: 60%;
+    border: solid thin rgb(160, 160, 160);
 }
 
 #contents{
@@ -84,28 +93,63 @@ header{
 
 article{
     width: 24vw;
-    height: 15vw;
+    height: 12vw;
 
     padding: 1vw;
     margin: 1.5vw 1vw;
 
     background: rgb(255, 255, 255);
-    border-radius: 0.5vw / 0.5vw;
+    border-radius: 0.8vw / 0.8vw;
+}
+
+.status{
+    margin: -1vw -1vw 0 -1vw;
+    padding-left: 1vw;
+    font-size: 1vw;
+    color: rgb(0, 0, 0);
+    height: 1.5vw;
+    border-radius: 0.8vw 0.8vw 0 0 / 0.8vw 0.8vw 0 0;
 }
 
 .event_name{
+    padding: 1vw 0 0 0;
 }
 
 .contact{
     margin-left: 2vw;
-    font-size: 1vw;
 }
 
 .category{
+    font-size: 1vw;
     text-align: right;
-    margin-right: 2vw;
+    margin-right: 1.5vw;
+    margin-top: 5vw;
 }
 
 .category::before{
     content: '#';
+}
+
+#indexForm{
+    display: flex;
+
+    width: 100%;
+    text-align: center;
+}
+
+.pageButton{
+    width: 100%;
+}
+
+.buttonHidden{
+    color: rgb(160, 160, 160);
+}
+
+.hr{
+    width: 40%;
+    border: solid thin rgb(160, 160, 160);
+}
+
+footer{
+    margin-top: 4vw;
 }

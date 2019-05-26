@@ -8,37 +8,57 @@
         <link href="style_pc.css" rel="stylesheet" media="(min-device-aspect-ratio: 3/4)">
         <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-        <title>Fukui Event Information</title>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <title>福井イベント情報</title>
     </head>
     <body>
       <header>
-        <h1>Fukui Event Information</h1>
-        <form id="form">
-          <div>
-            <input id="search" type="search" v-model="keyword" placeholder="Search by Event Name or Category.">
-          </div>
+        <h1>福井イベント情報</h1>
+        <form id="searchForm" onsubmit="return false;">
+          <input id="search" type="search" v-model="keyword" placeholder="Search by event name, category, or others.">
           <div id="changeRange">
-            <span class="changeRangeButton">10件ずつ表示</span>|
-            <span class="changeRangeButton">30件ずつ表示</span>|
-            <span class="changeRangeButton">全件表示</span>
+            <span class="changeRangeButton" v-on:click="setStep(10)" v-bind:class="{ buttonActive: step==10 }">10件ずつ表示</span>
+            <hr class="verticalHr">
+            <span class="changeRangeButton" v-on:click="setStep(30)" v-bind:class="{ buttonActive: step==30 }">30件ずつ表示</span>
+            <hr class="verticalHr">
+            <span class="changeRangeButton" v-on:click="setStep(-1)" v-bind:class="{ buttonActive: step==-1 }">全件表示</span>
           </div>
         </form>
       </header>
 
       <div id="contents">
-        <article v-for="event in activeEvents2()">
-          <div class="start_date">{{ event.start_date }} → {{ event.end_date }}</div>
+        <article v-for="event in activeEvents()">
+            <div class="status" v-bind:style="categoryColor(event)">{{ status(event) }}</div>
           <h2 class="event_name">{{ event.event_name }}</h2>
           <div class="contact">{{ event.contact }}</div>
+          <!--
+
+          <div class="">
+            {{ event.description }}<br>
+            {{ event.remarks }}<br>
+            {{ event.contact_phone_number }}<br>
+            {{ event.event_place }}<br>
+            {{ event.event_place_url }}<br>
+            {{ event.address }}<br>
+            {{ event.mail_address }}<br>
+            {{ event.transportation }}
+          </div>
+        -->
           <div class="category">{{ event.category }}</div>
         </article>
+        <form id="indexForm">
+            <span class="pageButton" v-on:click="back" v-bind:class="{ buttonHidden: isBegin() }">back</span>
+            <span class="pageNumber">{{ currentPage + 1 }} of {{ maxPage() }}</span>
+            <span class="pageButton" v-on:click="next" v-bind:class="{ buttonHidden: isEnd() }">next</span>
+        </form>
       </div>
 
       <footer>
-          <small>Copyright &copy; Fukui Event Information All Rights Reserved.</small>
+        <hr class="hr">
+        <small>Copyright &copy; Fukui Event Information All Rights Reserved.</small>
       </footer>
-        
 
-        <script src="Untitled.js"></script>
-    </body>
+
+      <script src="main.js"></script>
+  </body>
 </html>
