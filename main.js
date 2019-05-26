@@ -90,6 +90,58 @@ var eventList = new Vue({
                 return '終了';
             return '開催中';
         },
+        zoom: function(event){
+            zoomEvent.zoomEvent = event;
+            zoomEvent.isZoom = true;
+        },
+        categoryColor: function(event){
+            switch(event.category){
+                case 'こども': //黄
+                    return {background: 'rgb(255, 255, 0)'};
+                case 'スポーツ': //橙
+                    return {background: 'rgb(255, 127, 0)'};
+                case '音楽': //桃
+                    return {background: 'rgb(255, 0, 127)'};
+                case '歴史': //茶
+                    return {background: 'rgb(127, 0, 0)'};
+                case '食・健康': // 黄緑
+                    return {background: 'rgb(127, 255, 0)'};
+                case '文化・芸術': //水
+                    return {background: 'rgb(0, 255, 255)'};
+                case '自然・環境': //緑
+                    return {background: 'rgb(0, 127, 0)'};
+                case '観光・祭り': //赤
+                    return {background: 'rgb(255, 0, 0)'};
+                case '講座・セミナー': //青
+                    return {background: 'rgb(0, 0, 255)'};
+                default: //灰
+                    return {background: 'rgb(127, 127, 127)'};
+            }
+        }
+    }
+})
+
+var zoomEvent = new Vue({
+    el: '#zoomEvent',
+    data: {
+        zoomEvent: null,
+        isZoom: false
+    },
+    methods: {
+        cancel: function(){
+            this.isZoom = false;
+        },
+        status: function(event){
+            var nowDate = [new Date().getFullYear(), new Date().getMonth()+1, new Date().getDate()];
+            var eventStartDate = event.start_date.split('/');
+            var eventEndDate = event.end_date.split('/');
+
+            if(dateCmp(eventStartDate, nowDate) < 0)
+                return '開催予定';
+            if(dateCmp(nowDate, eventEndDate) < 0)
+                return '終了';
+            return '開催中';
+        },
         categoryColor: function(event){
             switch(event.category){
                 case 'こども': //黄
