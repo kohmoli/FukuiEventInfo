@@ -4,7 +4,7 @@
     align-items: center;
 
     margin: 0;
-    font-size: 2vw;
+    font-size: 3.2vw;
     font-family: "Noto Sans JP";
 
     background: rgb(240, 240, 240);
@@ -62,7 +62,7 @@ header{
     border-radius: 3vw / 3vw;
     border-width: 0;
 
-    font-size: 1.2vw;
+    font-size: 2.4vw;
 }
 
 #search:focus{
@@ -220,12 +220,12 @@ footer{
 }
 
 dt{
-    font-size: 2.8vw;
+    font-size: 2.4vw;
     margin-left: 2vw;
 }
 
 dd{
-    font-size: 1.6vw;
+    font-size: 2vw;
     margin-left: 6vw;
 }
 
