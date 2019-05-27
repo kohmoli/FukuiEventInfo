@@ -8,6 +8,7 @@
     font-family: "Noto Sans JP";
 
     background: rgb(240, 240, 240);
+    color: rgb(60, 60, 60);
 }
 
 h1, h2, h3, h4, h5, h6, p, div{
@@ -39,6 +40,11 @@ header{
     background: rgb(255, 255, 255);
 }
 
+#titleHeader{
+    text-decoration: none; 
+    color: rgb(60, 60, 60);
+}
+
 #searchForm{
     width: 82vw;
 
@@ -68,6 +74,8 @@ header{
     align-items: center;
 
     height: 3vw;
+
+    cursor: pointer;
 }
 
 .changeRangeButton{
@@ -102,11 +110,15 @@ header{
     border-radius: 0.8vw / 0.8vw;
 }
 
+.isSleep{
+    opacity: 0.6;
+}
+
 .status{
     margin: -1vw -1vw 0 -1vw;
     padding-left: 1vw;
     font-size: 1vw;
-    color: rgb(0, 0, 0);
+    color: rgba(255, 255, 255, 1);
     height: 1.5vw;
     border-radius: 0.8vw 0.8vw 0 0 / 0.8vw 0.8vw 0 0;
 }
@@ -124,6 +136,8 @@ header{
     text-align: right;
     margin-right: 1.5vw;
     margin-top: 5vw;
+
+    cursor: pointer;
 }
 
 .category::before{
@@ -156,6 +170,7 @@ footer{
 
 #zoomEvent{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 
@@ -178,11 +193,16 @@ footer{
 }
 
 .zoomStatus{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
     margin: -2vw -2vw 0 -2vw;
     padding-left: 2vw;
-    font-size: 1vw;
-    color: rgb(0, 0, 0);
-    height: 1.5vw;
+    padding-right: 1vw;
+    font-size: 1.2vw;
+    color: rgb(255, 255, 255);
+    height: 2vw;
     border-radius: 0.8vw 0.8vw 0 0 / 0.8vw 0.8vw 0 0;
 }
 
@@ -195,6 +215,24 @@ footer{
 .zoomDescription{
     padding: 0 4vw 1vw 2vw;
     white-space: normal;
+}
+
+dt{
+    font-size: 1.25vw;
+    margin-left: 1vw;
+}
+
+dd{
+    font-size: 1vw;
+    margin-left: 3vw;
+}
+
+.url{
+    display: inline-block;
+    padding: 0 0.5vw;
+    text-decoration: none;
+    color: rgb(60, 60, 60);
+    border-bottom: solid thin rgb(60, 60, 60);
 }
 
 .zoomRemarks{
@@ -210,4 +248,10 @@ footer{
 
 .zoomCategory::before{
     content: '#';
+}
+
+.fa-times{
+    font-size: 1.2vw;
+
+    cursor: pointer;
 }

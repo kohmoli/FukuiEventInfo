@@ -17,6 +17,7 @@ dateCmp = function(date1, date2){
 var search = new Vue({
     el: '#searchForm',
     data: {
+        beforeKeyword: '',
         keyword: '',
         step: 10
     },
@@ -24,6 +25,13 @@ var search = new Vue({
         setStep: function(step){
             eventList.currentPage = 0;
             this.step = step;
+        },
+        reset: function(){
+            if(this.beforeKeyword!=this.keyword){
+                eventList.currentPage = 0;
+                this.beforeKeyword = this.keyword;
+                scrollTo(0, 0);
+            }
         }
     }
 })
@@ -42,10 +50,19 @@ var eventList = new Vue({
     },
     methods: {
         matchEvents: function(){
+            search.reset();
             return this.events.filter(
                     event => 
-                    (event.event_name.indexOf(search.keyword)>=0 ||
-                    event.category.indexOf(search.keyword)>=0) &&
+                    (
+                        event.event_name.indexOf(search.keyword)>=0 ||
+                        ('#' + event.category).indexOf(search.keyword)>=0 ||
+                        event.description.indexOf(search.keyword)>=0 ||
+                        event.contact.indexOf(search.keyword)>=0 ||
+                        event.event_place.indexOf(search.keyword)>=0 ||
+                        event.transportation.indexOf(search.keyword)>=0 ||
+                        event.remarks.indexOf(search.keyword)>=0 ||
+                        event.address.indexOf(search.keyword)>=0
+                    ) &&
                     this.status(event) != '終了'
             );
         },
@@ -94,29 +111,32 @@ var eventList = new Vue({
             zoomEvent.zoomEvent = event;
             zoomEvent.isZoom = true;
         },
-        categoryColor: function(event){
-            switch(event.category){
+        categoryColor: function(category){
+            switch(category){
                 case 'こども': //黄
-                    return {background: 'rgb(255, 255, 0)'};
+                    return 'rgb(230, 200, 40)';
                 case 'スポーツ': //橙
-                    return {background: 'rgb(255, 127, 0)'};
+                    return 'rgb(255, 180, 100)';
                 case '音楽': //桃
-                    return {background: 'rgb(255, 0, 127)'};
+                    return 'rgb(255, 160, 200)';
                 case '歴史': //茶
-                    return {background: 'rgb(127, 0, 0)'};
+                    return 'rgb(180, 120, 120)';
                 case '食・健康': // 黄緑
-                    return {background: 'rgb(127, 255, 0)'};
+                    return 'rgb(120, 220, 20)';
                 case '文化・芸術': //水
-                    return {background: 'rgb(0, 255, 255)'};
+                    return 'rgb(100, 220, 220)';
                 case '自然・環境': //緑
-                    return {background: 'rgb(0, 127, 0)'};
+                    return 'rgb(100, 160, 100)';
                 case '観光・祭り': //赤
-                    return {background: 'rgb(255, 0, 0)'};
+                    return 'rgb(255, 160, 160)';
                 case '講座・セミナー': //青
-                    return {background: 'rgb(0, 0, 255)'};
+                    return 'rgb(180, 180, 255)';
                 default: //灰
-                    return {background: 'rgb(127, 127, 127)'};
+                    return 'rgb(160, 160, 160)';
             }
+        },
+        searchCategory: function(event){
+            search.keyword = '#' + event.category;
         }
     }
 })
@@ -125,46 +145,20 @@ var zoomEvent = new Vue({
     el: '#zoomEvent',
     data: {
         zoomEvent: null,
-        isZoom: false
+        isZoom: false,
+        onZoom: false
     },
     methods: {
         cancel: function(){
-            this.isZoom = false;
+            if(!this.onZoom)
+                this.isZoom = false;
+            else
+                this.onZoom = false;
         },
-        status: function(event){
-            var nowDate = [new Date().getFullYear(), new Date().getMonth()+1, new Date().getDate()];
-            var eventStartDate = event.start_date.split('/');
-            var eventEndDate = event.end_date.split('/');
-
-            if(dateCmp(eventStartDate, nowDate) < 0)
-                return '開催予定';
-            if(dateCmp(nowDate, eventEndDate) < 0)
-                return '終了';
-            return '開催中';
+        cancelCancel: function(){
+            this.onZoom = true;
         },
-        categoryColor: function(event){
-            switch(event.category){
-                case 'こども': //黄
-                    return {background: 'rgb(255, 255, 0)'};
-                case 'スポーツ': //橙
-                    return {background: 'rgb(255, 127, 0)'};
-                case '音楽': //桃
-                    return {background: 'rgb(255, 0, 127)'};
-                case '歴史': //茶
-                    return {background: 'rgb(127, 0, 0)'};
-                case '食・健康': // 黄緑
-                    return {background: 'rgb(127, 255, 0)'};
-                case '文化・芸術': //水
-                    return {background: 'rgb(0, 255, 255)'};
-                case '自然・環境': //緑
-                    return {background: 'rgb(0, 127, 0)'};
-                case '観光・祭り': //赤
-                    return {background: 'rgb(255, 0, 0)'};
-                case '講座・セミナー': //青
-                    return {background: 'rgb(0, 0, 255)'};
-                default: //灰
-                    return {background: 'rgb(127, 127, 127)'};
-            }
-        }
+        status: eventList.status,
+        categoryColor: eventList.categoryColor
     }
 })

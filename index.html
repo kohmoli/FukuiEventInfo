@@ -7,13 +7,14 @@
         <link href="style_mobile.css" rel="stylesheet" media="(max-device-aspect-ratio: 3/4)">
         <link href="style_pc.css" rel="stylesheet" media="(min-device-aspect-ratio: 3/4)">
         <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
         <title>福井イベント情報</title>
     </head>
     <body>
       <header>
-        <h1>福井イベント情報</h1>
+        <h1><a id="titleHeader" href="./index.html">福井イベント情報</a></h1>
         <form id="searchForm" onsubmit="return false;">
           <input id="search" type="search" v-model="keyword" placeholder="Search by event name, category, or others.">
           <div id="changeRange">
@@ -27,11 +28,11 @@
       </header>
 
       <div id="contents">
-        <article class="smallArticle" v-for="event in activeEvents()" v-on:click="zoom(event)">
-          <div class="status" v-bind:style="categoryColor(event)">{{ status(event) }}</div>
+        <article class="smallArticle" v-for="event in activeEvents()" v-on:click="zoom(event)" v-bind:class="{ isSleep: status(event)!='開催中' }">
+          <div class="status" v-bind:style="{background: categoryColor(event.category)}">{{ status(event) }}</div>
           <h2 class="event_name">{{ event.event_name }}</h2>
           <div class="contact">{{ event.contact }}</div>
-          <div class="category">{{ event.category }}</div>
+          <div class="category" v-on:click.stop="searchCategory(event)" v-bind:style="{color: categoryColor(event.category)}">{{ event.category }}</div>
         </article>
         <form id="indexForm">
             <span class="pageButton" v-on:click="back" v-bind:class="{ buttonHidden: isBegin() }">back</span>
@@ -46,34 +47,37 @@
       </footer>
 
       <div id="zoomEvent" v-if="isZoom" v-on:click="cancel">
-        <article class="zoomArticle">
-          <div class="zoomStatus" v-bind:style="categoryColor(zoomEvent)">{{ status(zoomEvent) }}</div>
+        <article class="zoomArticle" v-on:click="cancelCancel">
+          <div class="zoomStatus" v-bind:style="{background: categoryColor(zoomEvent.category)}">
+            <span>{{ status(zoomEvent) }}</span>
+            <i class="fas fa-times" v-on:click="cancel"></i>
+          </div>
           <h2 class="zoomEvent_name">{{ zoomEvent.event_name }}</h2>
           <p class="zoomDescription">{{ zoomEvent.description }}</p>
           <dl>
             <div v-if="zoomEvent.start_date == zoomEvent.end_date">
-              <dt>開催日</dt>
+              <dt v-bind:style="{color: categoryColor(zoomEvent.category)}">開催日</dt>
               <dd>{{ zoomEvent.start_date }}</dd>
             </div>
             <div v-if="zoomEvent.start_date != zoomEvent.end_date">
-              <dt>開催期間</dt>
+              <dt v-bind:style="{color: categoryColor(zoomEvent.category)}">開催期間</dt>
               <dd>{{ zoomEvent.start_date }} - {{ zoomEvent.end_date }}</dd>
             </div>
           </dl>
           <dl>
-            <dt>開催地</dt>
+            <dt v-bind:style="{color: categoryColor(zoomEvent.category)}">開催地</dt>
             <dd>{{ zoomEvent.event_place }}<span v-if="zoomEvent.address != ''">（{{ zoomEvent.address }}）</span></dd>
             <div v-if="zoomEvent.event_place_url != ''">
-              <dt>URL</dt>
-              <dd>{{ zoomEvent.event_place_url }}</dd>
+              <dt v-bind:style="{color: categoryColor(zoomEvent.category)}">ウェブサイト</dt>
+              <dd><a class="url" v-bind:href= "zoomEvent.event_place_url" target="_blank">{{ zoomEvent.event_place_url }}</a></dd>
             </div>
             <div v-if="zoomEvent.transportation != ''">
-              <dt>交通手段</dt>
+              <dt v-bind:style="{color: categoryColor(zoomEvent.category)}">交通手段</dt>
               <dd>{{ zoomEvent.transportation }}</dd>
             </div>
           </dl>
           <dl>
-            <dt>問い合わせ先</dt>
+            <dt v-bind:style="{color: categoryColor(zoomEvent.category)}">問い合わせ先</dt>
             <dd>{{ zoomEvent.contact }}（TEL: {{ zoomEvent.contact_phone_number }}）</dd>
             <div>
             <dt v-if="zoomEvent.mail_address != ''">メールアドレス</dt>
@@ -82,12 +86,11 @@
           </dl>
           <dl>
             <div v-if="zoomEvent.remarks != ''">
-            <dt>備考</dt>
+            <dt v-bind:style="{color: categoryColor(zoomEvent.category)}">備考</dt>
             <dd class="zoomRemarks">{{ zoomEvent.remarks }}</dd>
             </div>
           </dl>
-          
-          <div class="zoomCategory">{{ zoomEvent.category }}</div>
+          <div class="zoomCategory" v-bind:style="{color: categoryColor(zoomEvent.category)}">{{ zoomEvent.category }}</div>
         </article>
       </div>
 
