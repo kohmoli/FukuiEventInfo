@@ -153,6 +153,8 @@ header{
 
 .pageButton{
     width: 100%;
+
+    cursor: pointer;
 }
 
 .buttonHidden{
