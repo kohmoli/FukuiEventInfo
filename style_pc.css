@@ -108,6 +108,8 @@ header{
 
     background: rgb(255, 255, 255);
     border-radius: 0.8vw / 0.8vw;
+
+    filter: drop-shadow(0 0.1vw 0.05vw rgb(0, 0, 0));
 }
 
 .isSleep{

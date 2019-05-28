@@ -62,7 +62,7 @@ header{
     border-radius: 3vw / 3vw;
     border-width: 0;
 
-    font-size: 3.2vw;
+    font-size: 2.4vw;
 }
 
 #search:focus{
@@ -109,6 +109,8 @@ header{
 
     background: rgb(255, 255, 255);
     border-radius: 1.6vw / 1.6vw;
+
+    filter: drop-shadow(0 0.32vw 0.16vw rgb(0, 0, 0));
 }
 
 .isSleep{
