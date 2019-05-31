@@ -83,6 +83,7 @@ header{
     color: rgb(180, 180, 180);
 }
 
+
 .buttonActive{
     color: rgb(0, 0, 0);
 }
@@ -109,7 +110,7 @@ header{
     background: rgb(255, 255, 255);
     border-radius: 0.8vw / 0.8vw;
 
-    filter: drop-shadow(0 0.1vw 0.05vw rgb(0, 0, 0));
+    filter: drop-shadow(0 0.1vw 0.1vw rgb(160, 160, 160));
 }
 
 .isSleep{
@@ -133,12 +134,15 @@ header{
     margin-left: 2vw;
 }
 
-.category{
-    font-size: 1vw;
-    text-align: right;
+.category_case{
     margin-right: 1.5vw;
     margin-top: 5vw;
+    text-align: right;
 
+}
+
+.category{
+    font-size: 1vw;
     cursor: pointer;
 }
 
@@ -217,7 +221,7 @@ footer{
 }
 
 .zoomDescription{
-    padding: 0 4vw 1vw 2vw;
+    padding: 0 4vw 3.2vw 2vw;
     white-space: normal;
 }
 
@@ -228,7 +232,7 @@ dt{
 
 dd{
     font-size: 1vw;
-    margin-left: 3vw;
+    margin: 0 0 0.5vw 3vw;
 }
 
 .url{
@@ -254,7 +258,14 @@ dd{
     content: '#';
 }
 
-.fa-times{
+.close{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 2vw;
+    height: 2vw;
+
     font-size: 1.2vw;
 
     cursor: pointer;

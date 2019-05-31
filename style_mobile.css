@@ -79,6 +79,7 @@ header{
 }
 
 .changeRangeButton{
+    flex-shrink: 1;
     width: 100%;
     color: rgb(180, 180, 180);
     font-size: 2.4vw;
@@ -110,7 +111,7 @@ header{
     background: rgb(255, 255, 255);
     border-radius: 1.6vw / 1.6vw;
 
-    filter: drop-shadow(0 0.32vw 0.16vw rgb(0, 0, 0));
+    filter: drop-shadow(0 0.32vw 0.32vw rgb(160, 160, 160));
 }
 
 .isSleep{
@@ -135,12 +136,14 @@ header{
     font-size: 3.2vw;
 }
 
-.category{
-    font-size: 2.4vw;
-    text-align: right;
+.category_case{
     margin-right: 4.8vw;
     margin-top: 12vw;
+    text-align: right;
+}
 
+.category{
+    font-size: 2.4vw;
     cursor: pointer;
 }
 
@@ -192,7 +195,7 @@ footer{
 .zoomArticle{
     width: 84vw;
 
-    padding: 2vw;
+    padding: 3.2vw;
 
     background: rgb(255, 255, 255);
     border-radius: 1.6vw / 1.6vw;
@@ -204,7 +207,7 @@ footer{
     justify-content: space-between;
     align-items: center;
 
-    margin: -2vw -2vw 0 -2vw;
+    margin: -3.2vw -3.2vw 0 -3.2vw;
     padding-left: 2vw;
     font-size: 3.2vw;
     color: rgba(255, 255, 255, 1);
@@ -220,7 +223,7 @@ footer{
 
 .zoomDescription{
     font-size: 3.2vw;
-    padding: 0 6vw 2vw 4vw;
+    padding: 0 6vw 6.4vw 4vw;
     white-space: normal;
 }
 
@@ -231,7 +234,7 @@ dt{
 
 dd{
     font-size: 2vw;
-    margin-left: 6vw;
+    margin: 0 0 1vw 6vw;
 }
 
 .url{
@@ -257,7 +260,14 @@ dd{
     content: '#';
 }
 
-.fa-times{
+.close{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 4.8vw;
+    height: 4.8vw;
+
     margin-right: 2.4vw;
     font-size: 2.4vw;
 
