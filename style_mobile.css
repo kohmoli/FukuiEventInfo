@@ -49,6 +49,11 @@ header{
     margin-bottom: 1.6vw;
 }
 
+.fa-fly{
+    margin-right: 2vw;
+    color: rgb(60, 120, 100);
+}
+
 #searchForm{
     width: 82vw;
 
@@ -223,7 +228,7 @@ footer{
     padding-left: 2vw;
     font-size: 3.2vw;
     color: rgba(255, 255, 255, 1);
-    height: 4.8vw;
+    height: 6.4vw;
     border-radius: 1.6vw 1.6vw 0 0 / 1.6vw 1.6vw 0 0;
 }
 
@@ -276,11 +281,11 @@ dd{
     justify-content: center;
     align-items: center;
 
-    width: 4.8vw;
-    height: 4.8vw;
+    width: 6.4vw;
+    height: 6.4vw;
 
-    margin-right: 2.4vw;
-    font-size: 2.4vw;
+    margin-right: 1.6vw;
+    font-size: 3.2vw;
 
     cursor: pointer;
 }

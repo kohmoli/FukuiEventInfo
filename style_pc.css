@@ -49,6 +49,11 @@ header{
     margin-bottom: 0.4vw;
 }
 
+.fa-fly{
+    margin-right: 1vw;
+    color: rgb(60, 120, 100);
+}
+
 #searchForm{
     width: 82vw;
 
@@ -91,7 +96,7 @@ header{
 
 
 .buttonActive{
-    color: rgb(0, 0, 0);
+    color: rgb(60, 60, 60);
 }
 
 .verticalHr{
@@ -221,7 +226,7 @@ footer{
     padding-right: 1vw;
     font-size: 1.2vw;
     color: rgb(255, 255, 255);
-    height: 2vw;
+    height: 2.4vw;
     border-radius: 0.8vw 0.8vw 0 0 / 0.8vw 0.8vw 0 0;
 }
 
@@ -273,8 +278,8 @@ dd{
     justify-content: center;
     align-items: center;
 
-    width: 2vw;
-    height: 2vw;
+    width: 2.4vw;
+    height: 2.4vw;
 
     font-size: 1.2vw;
 
