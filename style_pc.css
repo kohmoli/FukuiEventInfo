@@ -38,11 +38,15 @@ header{
     height: 12vw;
 
     background: rgb(255, 255, 255);
+    border-radius: 0 0 50% 50% / 0 0 1vw 1vw;
+    border-top: 0.5vw solid rgb(60, 120, 100);
 }
 
 #titleHeader{
+    display: inline-block;
     text-decoration: none; 
     color: rgb(60, 60, 60);
+    margin-bottom: 0.4vw;
 }
 
 #searchForm{
@@ -56,6 +60,7 @@ header{
     height: 2vw;
 
     padding: 0 0.75vw;
+    margin-bottom: 0.2vw;
 
     background: rgb(245, 245, 245);
 
@@ -74,6 +79,7 @@ header{
     align-items: center;
 
     height: 3vw;
+    margin-bottom: 0.2vw;
 
     cursor: pointer;
 }
@@ -152,14 +158,19 @@ header{
 
 #indexForm{
     display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
 
     width: 100%;
-    text-align: center;
 }
 
 .pageButton{
-    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
+    width: 4vw;
+    height: 4vw;
     cursor: pointer;
 }
 
@@ -238,9 +249,8 @@ dd{
 .url{
     display: inline-block;
     padding: 0 0.5vw;
-    text-decoration: none;
+    text-decoration: underline;
     color: rgb(60, 60, 60);
-    border-bottom: solid thin rgb(60, 60, 60);
 }
 
 .zoomRemarks{

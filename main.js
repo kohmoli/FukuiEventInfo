@@ -113,26 +113,26 @@ var eventList = new Vue({
         },
         categoryColor: function(category){
             switch(category){
-                case 'こども': //黄
-                    return 'rgb(230, 200, 40)';
-                case 'スポーツ': //橙
-                    return 'rgb(255, 180, 100)';
-                case '音楽': //桃
-                    return 'rgb(255, 160, 200)';
-                case '歴史': //茶
-                    return 'rgb(180, 120, 120)';
-                case '食・健康': // 黄緑
-                    return 'rgb(120, 220, 20)';
-                case '文化・芸術': //水
-                    return 'rgb(100, 220, 220)';
-                case '自然・環境': //緑
-                    return 'rgb(100, 160, 100)';
-                case '観光・祭り': //赤
-                    return 'rgb(255, 160, 160)';
-                case '講座・セミナー': //青
-                    return 'rgb(180, 180, 255)';
-                default: //灰
-                    return 'rgb(160, 160, 160)';
+                case 'こども': //
+                    return '#008D56';
+                case 'スポーツ': //
+                    return '#008E74';
+                case '音楽': //
+                    return '#007655';
+                case '歴史': //
+                    return '#007F89';
+                case '食・健康': // 
+                    return '#006D4D';
+                case '文化・芸術': //
+                    return '#007D7A';
+                case '自然・環境': //
+                    return '#3F7735';
+                case '観光・祭り': //
+                    return '#20604F';
+                case '講座・セミナー': //
+                    return '#007B43';
+                default: //
+                    return '#22825D';
             }
         },
         searchCategory: function(event){
