@@ -40,6 +40,7 @@ header{
     background: rgb(255, 255, 255);
     border-radius: 0 0 50% 50% / 0 0 2vw 2vw;
     border-top: 1vw solid rgb(60, 120, 100);
+    filter: drop-shadow(0 0.32vw 0.32vw rgb(120, 120, 120));
 }
 
 #titleHeader{
@@ -49,9 +50,9 @@ header{
     margin-bottom: 1.6vw;
 }
 
-.fa-fly{
-    margin-right: 2vw;
-    color: rgb(60, 120, 100);
+#icon{
+    width: 9.6vw;
+    margin-right: -2vw;
 }
 
 #searchForm{
@@ -97,7 +98,7 @@ header{
 }
 
 .buttonActive{
-    color: rgb(0, 0, 0);
+    color: rgb(60, 60, 60);
 }
 
 .verticalHr{
@@ -110,6 +111,7 @@ header{
     flex-wrap: wrap;
 
     width: 84vw;
+    margin-top: 2.4vw;
 }
 
 .smallArticle{
@@ -117,12 +119,13 @@ header{
     height: 32vw;
 
     padding: 2vw;
-    margin: 2.4vw 0;
+    margin: 2vw 0;
 
     background: rgb(255, 255, 255);
     border-radius: 1.6vw / 1.6vw;
 
     filter: drop-shadow(0 0.32vw 0.32vw rgb(160, 160, 160));
+    cursor: pointer;
 }
 
 .isSleep{
@@ -149,13 +152,12 @@ header{
 
 .category_case{
     margin-right: 4.8vw;
-    margin-top: 12vw;
+    margin-top: 11.2vw;
     text-align: right;
 }
 
 .category{
     font-size: 2.4vw;
-    cursor: pointer;
 }
 
 .category::before{

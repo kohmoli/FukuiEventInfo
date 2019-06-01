@@ -40,6 +40,7 @@ header{
     background: rgb(255, 255, 255);
     border-radius: 0 0 50% 50% / 0 0 1vw 1vw;
     border-top: 0.5vw solid rgb(60, 120, 100);
+    filter: drop-shadow(0 0.1vw 0.1vw rgb(120, 120, 120));
 }
 
 #titleHeader{
@@ -49,9 +50,9 @@ header{
     margin-bottom: 0.4vw;
 }
 
-.fa-fly{
-    margin-right: 1vw;
-    color: rgb(60, 120, 100);
+#icon{
+    width: 4.8vw;
+    margin-right: -0.8vw;
 }
 
 #searchForm{
@@ -109,6 +110,7 @@ header{
     flex-wrap: wrap;
 
     width: 84vw;
+    margin-top: 2vw;
 }
 
 .smallArticle{
@@ -122,6 +124,7 @@ header{
     border-radius: 0.8vw / 0.8vw;
 
     filter: drop-shadow(0 0.1vw 0.1vw rgb(160, 160, 160));
+    cursor: pointer;
 }
 
 .isSleep{
@@ -154,7 +157,6 @@ header{
 
 .category{
     font-size: 1vw;
-    cursor: pointer;
 }
 
 .category::before{

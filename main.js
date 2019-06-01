@@ -40,7 +40,8 @@ var eventList = new Vue({
     el: '#contents',
     data: {
         currentPage: 0,
-        events: []
+        events: [],
+        active: false
     },
     mounted: function(){
             axios.get('https://raw.githubusercontent.com/jigjp/intern_exam/master/fukui_event.json')
@@ -50,7 +51,6 @@ var eventList = new Vue({
     },
     methods: {
         matchEvents: function(){
-            search.reset();
             return this.events.filter(
                     event => 
                     (
@@ -67,6 +67,7 @@ var eventList = new Vue({
             );
         },
         activeEvents: function(){
+            search.reset();
             if(search.step > 0)
                 return this.matchEvents().slice(search.step*this.currentPage, search.step*(this.currentPage+1));
             else
@@ -113,25 +114,25 @@ var eventList = new Vue({
         },
         categoryColor: function(category){
             switch(category){
-                case 'こども': //
+                case 'こども':
                     return '#008D56';
-                case 'スポーツ': //
+                case 'スポーツ':
                     return '#008E74';
-                case '音楽': //
+                case '音楽':
                     return '#007655';
-                case '歴史': //
+                case '歴史':
                     return '#007F89';
-                case '食・健康': // 
+                case '食・健康':
                     return '#006D4D';
-                case '文化・芸術': //
+                case '文化・芸術':
                     return '#007D7A';
-                case '自然・環境': //
+                case '自然・環境':
                     return '#3F7735';
-                case '観光・祭り': //
+                case '観光・祭り':
                     return '#20604F';
-                case '講座・セミナー': //
+                case '講座・セミナー':
                     return '#007B43';
-                default: //
+                default:
                     return '#22825D';
             }
         },
